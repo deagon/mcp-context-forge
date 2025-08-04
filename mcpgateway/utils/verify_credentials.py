@@ -471,6 +471,7 @@ async def require_docs_basic_auth(auth_header: str) -> str:
     """
     scheme, param = get_authorization_scheme_param(auth_header)
     if scheme.lower() == "basic" and param and settings.docs_allow_basic_auth:
+
         try:
             data = b64decode(param).decode("ascii")
             username, separator, password = data.partition(":")
@@ -564,5 +565,6 @@ async def require_auth_override(
         if scheme.lower() == "bearer" and param:
             credentials = HTTPAuthorizationCredentials(scheme=scheme, credentials=param)
         elif scheme.lower() == "basic" and param and settings.docs_allow_basic_auth:
+            # Only allow Basic Auth for docs endpoints when explicitly enabled  
             return await require_docs_basic_auth(auth_header)
     return await require_auth(credentials=credentials, jwt_token=jwt_token)
