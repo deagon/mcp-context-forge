@@ -23,9 +23,8 @@ and detail.
 from __future__ import annotations
 
 # Standard
-from datetime import datetime, timedelta, timezone
 import base64
-import sys
+from datetime import datetime, timedelta, timezone
 
 # Third-Party
 from fastapi import HTTPException, status
@@ -38,6 +37,7 @@ import pytest
 from mcpgateway.utils import verify_credentials as vc  # module under test
 
 try:
+    # First-Party
     from mcpgateway.main import app
 except ImportError:
     app = None
