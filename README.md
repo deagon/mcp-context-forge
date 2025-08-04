@@ -1007,7 +1007,11 @@ You can get started by copying the provided [.env.example](.env.example) to `.en
 | `CORS_ENABLED`            | Enable CORS                    | `true`                                         | bool       |
 | `DOCS_ALLOW_BASIC_AUTH`   | Allow Basic Auth for docs (in addition to JWT)         | `false`                                        | bool       |
 
-> Note: do not quote the ALLOWED_ORIGINS values, this needs to be valid JSON, such as: `ALLOWED_ORIGINS=["http://localhost", "http://localhost:4444"]`
+> Note: do not quote the ALLOWED_ORIGINS values, this needs to be valid JSON, such as: `ALLOWED_ORIGINS=["http://localhost", "http://localhost:4444"
+Documentation endpoints (`/docs`, `/redoc`, `/openapi.json`) are always protected by authentication. 
+> By default, they require Bearer token authentication. Setting `DOCS_ALLOW_BASIC_AUTH=true` enables 
+> HTTP Basic Authentication as an additional method using the same credentials as `BASIC_AUTH_USER` 
+> and `BASIC_AUTH_PASSWORD`.]`
 
 ### Logging
 
